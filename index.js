@@ -1,5 +1,10 @@
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose');
+
+// Connect to DB
+mongoose.connect('mongodb://localhost:27017/db_Node', { useNewUrlParser: true, useUnifiedTopology: true });
+let db = mongoose.connection;
 
 // Init App
 const app = express();
@@ -37,7 +42,8 @@ app.get('/', (req,res) => {
     },
   ]
   res.render('index', {
-    title: 'Home'
+    title: 'Home',
+    articles
   });
 });
 
